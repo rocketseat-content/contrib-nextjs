@@ -1,0 +1,1 @@
+export {default as RocketLogo} from './rocketseat.svg'
