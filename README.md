@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fhello-world&env=PRISMIC_API_TOKEN,PRISMIC_REPOSITORY_NAME,PRISMIC_LOCALE&envDescription=Reference&envLink=https%3A%2F%2Fgithub.com%2FRocketseat%2Fcontrib-nextjs%2Fblob%2F54881701f7c22cb22751d23dadf12b9cf5ac4231%2Flib%2Fapi-prismic.ts)
+
 ## Getting Started
 
 First, run the development server:
