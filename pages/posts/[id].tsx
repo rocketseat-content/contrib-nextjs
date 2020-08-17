@@ -10,7 +10,7 @@ interface PostProps {
       url: string;
     };
     content: RichTextBlock[];
-  }
+  };
 }
 
 function Post({ post }: PostProps) {
@@ -19,15 +19,16 @@ function Post({ post }: PostProps) {
   return (
     <div>
       <h1>{post.title}</h1>
-      <img width="200" src={post.thumbnail.url} alt="" />
+      <img width='200' src={post.thumbnail.url} alt='' />
 
-      {RichText.asText(post.content)}
+      {RichText.render(post.content)}
     </div>
   );
 }
 
 export async function getStaticProps(ctx: GetStaticPropsContext) {
-  const post = await fetchAPI(`
+  const post = await fetchAPI(
+    `
     query($slug: String!, $lang: String!) {
       post(uid: $slug, lang: $lang) {
         title
@@ -35,21 +36,26 @@ export async function getStaticProps(ctx: GetStaticPropsContext) {
         content
       }
     }
-  `, {
-    slug: ctx.params.id,
-    lang: 'pt-br'
-  });
+  `,
+    {
+      slug: ctx.params.id,
+      lang: 'pt-br',
+    }
+  );
 
   return {
     props: {
       post: post.post,
     },
-    revalidate: 1
-  }
+    revalidate: 1,
+  };
 }
 
 export async function getStaticPaths() {
-  const { allPosts: { edges }} = await fetchAPI(`
+  const {
+    allPosts: { edges },
+  } = await fetchAPI(
+    `
     query {
       allPosts {
         edges {
@@ -61,12 +67,14 @@ export async function getStaticPaths() {
         }
       }
     }
-  `, {});
+  `,
+    {}
+  );
 
   return {
     paths: edges.map(({ node }) => `/posts/${node._meta.uid}`) || [],
-    fallback: false
-  }
+    fallback: false,
+  };
 }
 
 export default Post;
